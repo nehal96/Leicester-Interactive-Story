@@ -22,7 +22,7 @@ function draw(data) {
 
   // Defining the y-scale
   var yScale = d3.scaleLinear()
-                 .domain([20, 0])
+                 .domain([20, 1])
                  .range([height, margin]);
 
   // Defining the x-scale
@@ -35,10 +35,16 @@ function draw(data) {
 
   // Define the x- and y-axes
   var yAxis = d3.axisLeft()
-                .scale(yScale);
+                .scale(yScale)
+                .tickValues([20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 1])
 
   var xAxis = d3.axisBottom()
                 .scale(xScale)
+                .ticks(d3.timeMonth.every(2))
+                .tickSizeInner([ 5 ])
+                .tickSizeOuter([ 0 ])
+                .tickPadding([ 3 ]);
+
 
   // Applying scales to circles
   circles.attr('cy', function(d) {
@@ -51,15 +57,16 @@ function draw(data) {
 
   // Draw the y- and x-axes
   svg.append('g')
-     .attr("transform", "translate(" + margin + ", 0)")
+     .attr("transform", "translate(" + (margin - 20) + ", 0)")
      .call(yAxis)
 
   svg.append('g')
      .attr("class", "x-axis")
-     .attr("transform", "translate(0," + height + ")")
+     .attr("transform", "translate(0," + (height + 20) + ")")
      .call(xAxis)
 };
 
+// Function that converts dates in text format to Date object.
 function convert_to_date(text) {
   date = d3.timeParse("%d/%m/%y")
   return date(text)
