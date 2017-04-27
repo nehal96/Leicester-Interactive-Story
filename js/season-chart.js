@@ -2,12 +2,17 @@
 // Main function
 function draw(data) {
   "use strict";
-  var margin = 50,
-      width = 950 - margin,
-      height = 550 - margin
 
   // Creating the svg element for the plot
-  var svg = d3.select('#season-chart')
+  var chartDiv = document.getElementById("season-chart")
+
+  var margin = 50,
+      //width = 1200 - margin,
+      //height = 650 - margin;
+      width = chartDiv.clientWidth - margin,
+      height = chartDiv.clientHeight - margin;
+
+  var svg = d3.select(chartDiv)
               .append('svg')
               .attr('width', width + margin)
               .attr('height', height + margin)
@@ -57,7 +62,8 @@ function draw(data) {
 
   // Draw the y- and x-axes
   svg.append('g')
-     .attr("transform", "translate(" + (margin - 20) + ", 0)")
+     .attr("class", "y-axis")
+     .attr("transform", "translate(" + (margin - 10) + ", 0)")
      .call(yAxis)
 
   svg.append('g')
