@@ -21,3 +21,11 @@ body {
 #season-chart {
   margin-top: 20px;
 }
+
+.tick text {
+  font-size: 12px;
+}
+
+.y-axis .tick line {
+  opacity: 0.2;
+}
