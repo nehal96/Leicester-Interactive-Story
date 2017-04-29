@@ -42,13 +42,16 @@ function draw(data) {
   var yAxis = d3.axisLeft()
                 .scale(yScale)
                 .tickValues([20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 1])
+                .tickSizeInner(-(width - margin))
+                .tickSizeOuter(0)
+                .tickPadding(10);
 
   var xAxis = d3.axisBottom()
                 .scale(xScale)
                 .ticks(d3.timeMonth.every(2))
                 .tickSizeInner([ 5 ])
                 .tickSizeOuter([ 0 ])
-                .tickPadding([ 3 ]);
+                .tickPadding([ 5 ]);
 
 
   // Applying scales to circles
