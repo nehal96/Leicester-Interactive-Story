@@ -19,5 +19,18 @@ body {
 }
 
 #season-chart {
-  margin-top: 20px;
+  margin-top: 50px;
+  position: absolute;
+  top: 120px;
+  bottom: 0px;
+  left: 20px;
+  right: 20px;
+}
+
+.tick text {
+  font-size: 12px;
+}
+
+.y-axis .tick line {
+  opacity: 0.2;
 }
